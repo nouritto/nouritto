@@ -15,6 +15,29 @@ menuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('show');
 });
 
+// Close menu when clicking outside
+
+document.addEventListener('click', (e) => {
+
+    const clickedInsideMenu = mobileMenu.contains(e.target);
+    const clickedMenuBtn = menuBtn.contains(e.target);
+
+    if (!clickedInsideMenu && !clickedMenuBtn) {
+        mobileMenu.classList.remove('show');
+    }
+});
+
+// Close menu after clicking links
+
+const mobileLinks = mobileMenu.querySelectorAll('a');
+
+mobileLinks.forEach(link => {
+
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+    });
+});
+
 // Reveal animation
 
 const reveals = document.querySelectorAll('.reveal');
